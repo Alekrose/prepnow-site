@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>PrepNow · This week's cheapest meal plan, cooked in two evenings</title>
+<meta name="description" content="PrepNow builds your meal plan from this week's deals at eight Danish supermarkets, with one shopping list and the whole week cooked in two evenings.">
+<link rel="icon" href="/favicon.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&display=swap">
+<style>
+:root { --violet: #5d48db; --ink: #0f0e14; --graphite: #2e2e2e; --stone: #6a6a70; --canvas: #f7f6fb; --card: #fff; --lavender: #ecebfa; --line: #ececf3; }
+@media (prefers-color-scheme: dark) { :root { --violet: #a89cff; --ink: #f2f1f7; --graphite: #d9d7e6; --stone: #9c9aac; --canvas: #121118; --card: #1b1a24; --lavender: #211f33; --line: #2c2a3a; } }
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--canvas); color: var(--ink); font-family: Manrope, system-ui, sans-serif; line-height: 1.55; -webkit-font-smoothing: antialiased; }
+a { color: var(--violet); }
+.wrap { max-width: 980px; margin: 0 auto; padding: 0 20px; }
+header { padding: 22px 0; display: flex; justify-content: space-between; align-items: center; }
+.brand { font-weight: 700; font-size: 20px; color: var(--ink); text-decoration: none; letter-spacing: -0.02em; display: inline-flex; align-items: center; gap: 4px; }
+.hero { display: grid; grid-template-columns: 1.3fr 1fr; gap: 32px; align-items: center; padding: 40px 0 56px; }
+.hero h1 { font-size: clamp(38px, 6vw, 64px); line-height: 1.04; letter-spacing: -0.03em; margin: 0; font-weight: 700; }
+.hero p { font-size: 19px; color: var(--graphite); margin: 18px 0 0; max-width: 34ch; }
+.hero img { width: 100%; max-width: 340px; justify-self: center; filter: drop-shadow(0 30px 50px rgba(40, 20, 120, .25)); }
+.soon { display: inline-block; margin-top: 26px; background: var(--violet); color: #fff; border-radius: 30px; padding: 12px 20px; font-weight: 600; }
+@media (prefers-color-scheme: dark) { .soon { color: #121118; } }
+.grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; }
+.card { background: var(--card); border-radius: 26px; padding: 24px; box-shadow: 0 18px 60px rgba(30, 20, 80, .08); }
+.card h3 { margin: 0 0 6px; font-size: 18px; letter-spacing: -0.01em; }
+.card p { margin: 0; color: var(--graphite); font-size: 15.5px; }
+h2 { font-size: 30px; letter-spacing: -0.02em; margin: 56px 0 18px; }
+.muted { color: var(--stone); }
+footer { margin: 72px 0 40px; padding-top: 20px; border-top: 1px solid var(--line); font-size: 14px; color: var(--stone); display: flex; flex-wrap: wrap; gap: 8px 20px; }
+article { max-width: 700px; padding: 20px 0 20px; }
+article h1 { font-size: 40px; letter-spacing: -0.02em; margin: 0; }
+article h2 { font-size: 21px; margin: 30px 0 6px; }
+article p { margin: 6px 0; color: var(--graphite); }
+.draft { display: inline-block; background: #fff4dc; color: #8a5a00; border-radius: 12px; padding: 4px 10px; font-size: 14px; font-weight: 600; margin-top: 10px; }
+@media (max-width: 720px) { .hero { grid-template-columns: 1fr; padding-top: 16px; } .hero img { max-width: 220px; order: -1; } }
+</style>
+</head>
+<body>
+<div class="wrap">
+<header><a class="brand" href="/en/"><img src="/logo-mark.svg" alt="" width="30" height="30">PrepNow</a><a href="/">Dansk</a></header>
+<section class="hero">
+<div><h1>This week's cheapest meal plan, cooked in two evenings</h1><p>PrepNow reads the Netto, REMA 1000, Lidl, 365discount, Føtex, Bilka, SuperBrugsen and Kvickly flyers and builds your week around your goals, with one shopping list sorted by aisle.</p><span class="soon">Coming soon to iPhone and Android</span></div>
+<img src="/boksie.svg" alt="Boksie">
+</section>
+<div class="grid"><div class="card"><h3>Dishes from this week's deals</h3><p>Over 2,000 food deals from eight chains every week, and dishes that fit your goals: high protein, high fibre, no added sugar.</p></div><div class="card"><h3>Prep night</h3><p>The whole week's food in two evenings, with the steps of two dishes woven together and timers that ring.</p></div><div class="card"><h3>For students</h3><p>Dinners from 8 kr a portion, a budget for your student grant, and Madklub: scale a dish for the whole corridor and see the price per person.</p></div></div>
+<h2>Pricing</h2>
+<div class="grid"><div class="card"><h3>Free</h3><p>This week's 3 deal dishes with recipe and price, all deals and your weekly streak.</p></div><div class="card"><h3>Pro</h3><p>49 kr a month or 349 kr a year. The whole week's plan, the shopping list, Prep night, unlimited swaps, "Cheapest week" and price alerts.</p></div><div class="card"><h3>Student</h3><p>29 kr a month or 199 kr a year with your student e-mail.</p></div><div class="card"><h3>Family</h3><p>69 kr a month or 499 kr a year for up to 4 people in the same household, with a shared plan and shopping list.</p></div></div>
+<p class="muted">Try Pro free for 7 days.</p>
+<footer>
+<span>© 2026 PrepNow · CVR 46801822</span>
+<a href="/en/privacy/">Privacy policy</a>
+<a href="/en/terms/">Terms</a>
+<a href="/en/delete-account/">Delete account</a>
+<a href="mailto:kontakt@prepnow.dk">kontakt@prepnow.dk</a>
+<span>PrepNow is not affiliated with any of the stores. Nutrition data from the Danish Food Composition Database, DTU National Food Institute.</span>
+</footer>
+</div>
+</body>
+</html>

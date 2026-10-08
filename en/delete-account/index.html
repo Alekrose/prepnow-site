@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Delete your PrepNow account · PrepNow</title>
+<meta name="description" content="Delete it yourself in the app in a moment, or write to us.">
+<meta name="theme-color" content="#f3f0ff">
+<link rel="canonical" href="https://prepnow.dk/en/delete-account/">
+<link rel="alternate" hreflang="da" href="https://prepnow.dk/slet-konto/">
+<link rel="icon" href="/img/brand/app-icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/img/brand/favicon-180.png">
+<link rel="preload" href="/fonts/Manrope_800ExtraBold.ttf" as="font" type="font/ttf" crossorigin>
+<link rel="stylesheet" href="/css/site.css">
+<style>
+.nav.del-nav { position: absolute; }
+.del-hero { position: relative; overflow: hidden; isolation: isolate; text-align: center; display: grid; justify-items: center; gap: 18px;
+  padding: clamp(118px, 16vh, 168px) var(--gutter) clamp(130px, 16vw, 190px);
+  background: radial-gradient(60% 50% at 78% 22%, rgba(150, 133, 255, 0.42), transparent 70%), radial-gradient(40% 35% at 12% 70%, rgba(197, 240, 106, 0.1), transparent 70%), linear-gradient(180deg, #ebe6ff 0%, #f3f0ff 52%, var(--canvas) 100%); }
+.del-hero .eyebrow { justify-self: center; align-self: center; }
+.del-hero .cloud-bank { bottom: -10%; -webkit-mask-image: linear-gradient(transparent, #000 40%); mask-image: linear-gradient(transparent, #000 40%); }
+/* the cloud bank fades into the page, no seam where the sky ends */
+.del-hero > :not(.sky-hero__sky) { position: relative; z-index: 2; }
+.del-hero::after { content: ''; position: absolute; left: 0; right: 0; bottom: 0; height: 100px; z-index: 1; background: linear-gradient(180deg, rgba(247, 246, 251, 0), var(--canvas)); pointer-events: none; }
+.del-hero__boksie { width: clamp(112px, 12vw, 150px); height: auto; animation: hop 2.6s var(--ease-out) infinite; filter: drop-shadow(0 24px 24px rgba(60, 40, 160, 0.3)); }
+.del-hero h1 { max-width: 12em; }
+.del-hero .lead { margin: 0 auto; text-wrap: balance; max-width: 42ch; }
+@media (max-width: 760px) { .del-hero .lead { max-width: 30ch; } }
+.del-hero .cloud--1 { top: 6%; opacity: 0.5; }
+.del-updated { font-size: 14px; color: var(--stone); }
+.del-body { position: relative; z-index: 2; max-width: 1040px; margin: clamp(-130px, -12vw, -90px) auto 0; padding: 0 var(--gutter) clamp(48px, 6vw, 80px); display: grid; gap: 18px; }
+.del-ways { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; }
+.del-body .card { box-shadow: 0 1px 2px rgba(17, 14, 36, 0.05), 0 30px 60px -36px rgba(60, 40, 160, 0.35); gap: 14px; }
+.del-card__head { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+.del-ico { display: inline-grid; place-items: center; width: 40px; height: 40px; border-radius: 13px; background: var(--lavender); color: var(--violet); }
+.del-ico svg { width: 22px; height: 22px; }
+.del-chip { padding: 6px 12px; border-radius: 999px; background: var(--lime); color: var(--night); font-size: 13px; font-weight: 800; }
+.del-path { display: flex; flex-direction: column; align-items: stretch; margin: 4px 0; padding: 0; list-style: none; }
+.del-path li { display: flex; flex-direction: column; align-items: stretch; }
+.del-path li + li::before { content: ''; width: 2px; height: 10px; margin-left: 20px; background: var(--lavender); }
+.del-path span { display: flex; align-items: center; gap: 8px; padding: 9px 14px 9px 9px; border-radius: 14px; background: var(--canvas); box-shadow: inset 0 0 0 1px rgba(93, 72, 219, 0.14); font-weight: 700; font-size: 15px; }
+.del-path b { display: inline-grid; place-items: center; width: 24px; height: 24px; border-radius: 8px; background: #fff; color: var(--violet); font-size: 13px; box-shadow: inset 0 0 0 1px rgba(93, 72, 219, 0.16); }
+.del-path li:last-child b { background: #fff; color: var(--violet); box-shadow: none; }
+.del-path li:last-child span { background: var(--lavender); color: var(--violet); box-shadow: inset 0 0 0 1.5px var(--violet); }
+.del-card .btn { align-self: flex-start; margin-top: 4px; }
+.del-note { font-size: 14px !important; }
+.del-note a { color: var(--violet); font-weight: 700; }
+.del-list { columns: 2; column-gap: 40px; margin: 6px 0 0; padding: 0; list-style: none; }
+.del-list li { display: flex; align-items: flex-start; gap: 10px; font-size: 16px; line-height: 1.4; break-inside: avoid; margin-bottom: 12px; }
+.del-list svg { flex: none; width: 22px; height: 22px; padding: 3px; border-radius: 999px; background: var(--lavender); color: var(--violet); margin-top: 1px; }
+/* the two lines that matter most for trust: what can't be undone, and that nothing is kept */
+.del-callout { display: flex; align-items: flex-start; gap: 10px; max-width: none !important; margin-top: 4px; padding: 11px 14px; border-radius: 14px; background: var(--lavender); color: #2e2e3a !important; font-weight: 600; font-size: 15px !important; line-height: 1.45; }
+.del-callout a { color: var(--violet); font-weight: 700; }
+.del-callout svg { flex: none; width: 20px; height: 20px; color: var(--violet); margin-top: 1px; }
+.del-small { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; }
+.del-small .card { background: rgba(255, 255, 255, 0.72); box-shadow: inset 0 0 0 1px rgba(93, 72, 219, 0.12); }
+.del-body .card h2 { font-size: clamp(22px, 2vw, 28px); font-weight: 800; letter-spacing: -0.03em; line-height: 1.15; }
+.del-body .del-small h2 { font-size: 21px; }
+.del-small a { color: var(--violet); font-weight: 700; }
+.footer a[aria-current] { color: #fff; }
+.del-back { justify-self: center; display: inline-flex; align-items: center; min-height: 44px; padding: 0 18px; margin-top: 6px; border-radius: 999px; color: var(--violet); font-weight: 700; text-decoration: none; }
+.footer nav a { display: inline-flex; align-items: center; min-height: 44px; }
+.del-nav .nav__links { display: flex; }
+.del-back:hover { text-decoration: underline; }
+@media (max-width: 860px) { .del-nav .btn { margin-left: 0; } }
+/* a phone: the logo is the way home (and the link at the foot), the language stays */
+@media (max-width: 480px) { .del-nav .btn { display: none; } .del-nav .nav__links a { padding: 0 8px; min-height: 44px; display: inline-flex; align-items: center; } }
+.nav .btn { white-space: nowrap; }
+@media (max-width: 760px) {
+  .del-ways, .del-small { grid-template-columns: 1fr; }
+  .del-list { columns: 1; }
+  .del-card .btn { align-self: stretch; justify-content: center; }
+}
+</style>
+</head>
+<body>
+<a class="skip" href="#indhold">Skip to content</a>
+<header class="nav is-day is-top del-nav">
+  <a class="nav__brand" href="/en/" aria-label="PrepNow, home">
+    <img src="/img/brand/logo-mark.svg" alt="" width="34" height="34"><span>PrepNow</span>
+  </a>
+  <nav class="nav__links" aria-label="Language"><a href="/slet-konto/" hreflang="da">Dansk</a></nav>
+  <a class="btn btn--violet btn--sm" href="/en/">Home</a>
+</header>
+<main id="indhold">
+  <section class="del-hero" aria-labelledby="del-title">
+    <div class="sky-hero__sky" aria-hidden="true">
+      <img class="cloud cloud--1" src="/img/3d/cloud-puff.webp" alt="">
+      <img class="cloud cloud--2" src="/img/3d/cloud-puff.webp" alt="">
+      <img class="cloud cloud--3" src="/img/3d/cloud-puff.webp" alt="">
+      <img class="cloud-bank" src="/img/3d/cloud-bank.webp" alt="">
+    </div>
+    <img class="del-hero__boksie" src="/img/3d/boksie.webp" alt="" width="150" height="145">
+    <span class="eyebrow">Your account</span>
+    <h1 id="del-title" class="display display--md">Delete your PrepNow account</h1>
+    <p class="lead">Delete it yourself in the app in a moment, or write to us.</p>
+    <p class="del-updated">Last updated 8 October 2026</p>
+  </section>
+  <div class="del-body">
+    <div class="del-ways">
+      <section class="card del-card" aria-labelledby="del-app">
+        <div class="del-card__head"><span class="del-ico"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="6.5" y="2.5" width="11" height="19" rx="3" fill="none" stroke="currentColor" stroke-width="2"/><path d="M10.5 18h3" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span><span class="del-chip">Quickest</span></div>
+        <h2 id="del-app">In the app</h2>
+        <ol class="del-path"><li><span><b aria-hidden="true">1</b>Open PrepNow</span></li><li><span><b aria-hidden="true">2</b>My account</span></li><li><span><b aria-hidden="true">3</b>Delete account</span></li></ol>
+        <p>Everything about you is deleted at once, both on our server and in the app.</p>
+        <p class="del-callout"><svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="8" fill="none" stroke="currentColor" stroke-width="2"/><path d="M10 9v5M10 6.2v.1" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg><span>It can’t be undone, so have a look at your plan first if you want to keep anything.</span></p>
+      </section>
+      <section class="card del-card" aria-labelledby="del-mail">
+        <div class="del-card__head"><span class="del-ico"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5.5" width="18" height="13" rx="3" fill="none" stroke="currentColor" stroke-width="2"/><path d="M4.5 7.5l7.5 6 7.5-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg></span></div>
+        <h2 id="del-mail">Without the app</h2>
+        <p>Write from the e-mail you sign in with, also if that’s through Apple or Google. If you hid your e-mail with Apple, give your name in PrepNow.</p>
+        <a class="btn btn--violet" href="mailto:kontakt@prepnow.dk?subject=Delete%20my%20account">Write to us</a>
+        <p class="del-callout"><svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="8" fill="none" stroke="currentColor" stroke-width="2"/><path d="M10 6v4.4l2.8 1.8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>We delete the account and all its data within 30 days and tell you when it is done. Or write straight to <a href="mailto:kontakt@prepnow.dk?subject=Delete%20my%20account">kontakt@prepnow.dk</a>.</span></p>
+      </section>
+    </div>
+    <section class="card" aria-labelledby="del-what">
+      <h2 id="del-what">What is deleted</h2>
+      <ul class="del-list"><li><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M5 10.5l3.2 3.2L15 6.8" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Your account (e-mail or Apple or Google ID)</span></li><li><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M5 10.5l3.2 3.2L15 6.8" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Your name and household</span></li><li><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M5 10.5l3.2 3.2L15 6.8" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Your goals, answers and exclusions</span></li><li><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M5 10.5l3.2 3.2L15 6.8" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Stores and regular items</span></li><li><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M5 10.5l3.2 3.2L15 6.8" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Meal plans and history</span></li><li><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M5 10.5l3.2 3.2L15 6.8" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Ratings and favourites</span></li><li><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M5 10.5l3.2 3.2L15 6.8" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Your student e-mail</span></li><li><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M5 10.5l3.2 3.2L15 6.8" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Your family membership</span></li><li><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M5 10.5l3.2 3.2L15 6.8" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Your answers from cancelling Pro</span></li></ul>
+      <p class="del-callout"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 2.5l6 2.4v4.6c0 3.9-2.6 6.7-6 8-3.4-1.3-6-4.1-6-8V4.9z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M7.2 10.2l2 2 3.6-3.8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>We keep nothing about you. From our backups it is gone within 30 days at the latest.</span></p>
+    </section>
+    <div class="del-small">
+      <section class="card" aria-labelledby="del-pro"><h2 id="del-pro">On Pro?</h2><p>Subscriptions are paid through Apple or Google. Cancel yours there before you delete the account. Purchase receipts are kept by them, not by us.</p></section>
+      <section class="card" aria-labelledby="del-part"><h2 id="del-part">Only some of it?</h2><p>You can delete your history yourself under Goals in the app. To have anything else deleted, write to <a href="mailto:kontakt@prepnow.dk">kontakt@prepnow.dk</a>.</p></section>
+    </div>
+    <a class="del-back" href="/en/">← Home</a>
+  </div>
+</main>
+<footer class="footer">
+  <div class="footer__brand"><img src="/img/brand/logo-mark.svg" alt="" width="28" height="28"><span>PrepNow</span></div>
+  <nav aria-label="Legal">
+    <a href="/en/privacy/">Privacy policy</a>
+    <a href="/en/terms/">Terms</a>
+    <a href="/en/delete-account/" aria-current="page">Delete account</a>
+    <a href="/slet-konto/" hreflang="da">Dansk</a>
+  </nav>
+  <p>PrepNow v/ Thomas Rosenberg (CVR 46801822) · <a href="mailto:kontakt@prepnow.dk">kontakt@prepnow.dk</a></p>
+</footer>
+</body>
+</html>

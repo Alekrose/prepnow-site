@@ -1,0 +1,17 @@
+<!doctype html>
+<html lang="da">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Hent PrepNow</title>
+<meta name="robots" content="noindex">
+<script>
+  var ios = "", android = "";
+  var ua = navigator.userAgent || '';
+  var isIos = /iPhone|iPad|iPod/.test(ua) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+  var to = isIos && ios ? ios : /Android/.test(ua) && android ? android : '/#retter';
+  location.replace(to);
+</script>
+</head>
+<body><p><a href="/#retter">PrepNow</a></p></body>
+</html>
