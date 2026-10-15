@@ -1,0 +1,18 @@
+<!doctype html>
+<html lang="da">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; media-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; script-src 'sha256-0NEYAggM+SDU+NEGd+XqRq0rWo7v0eOxJjvZRVkZ8As='">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Hent PrepNow</title>
+<meta name="robots" content="noindex">
+<script>
+  var ios = "https://apps.apple.com/dk/app/id6820721709", android = "";
+  var ua = navigator.userAgent || '';
+  var isIos = /iPhone|iPad|iPod/.test(ua) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+  var to = isIos && ios ? ios : /Android/.test(ua) && android ? android : '/#retter';
+  location.replace(to);
+</script>
+</head>
+<body><p><a href="/#retter">PrepNow</a></p></body>
+</html>
