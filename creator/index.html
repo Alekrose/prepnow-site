@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="da">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; media-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; script-src 'none'">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Bliv creator · PrepNow</title>
+<meta name="description" content="Lav videoer om billig aftensmad med PrepNow, og bliv betalt for dine visninger og for hver ny abonnent, du skaffer.">
+<meta name="theme-color" content="#f3f0ff">
+<link rel="canonical" href="https://prepnow.dk/creator/">
+<link rel="icon" href="/img/brand/app-icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/img/brand/favicon-180.png">
+<link rel="preload" href="/fonts/Manrope_800ExtraBold.ttf" as="font" type="font/ttf" crossorigin>
+<link rel="stylesheet" href="/css/site.css?v=407f491c32">
+<style>
+.nav.del-nav { position: absolute; }
+.del-hero { position: relative; overflow: hidden; isolation: isolate; text-align: center; display: grid; justify-items: center; gap: 18px;
+  padding: clamp(118px, 16vh, 168px) var(--gutter) clamp(130px, 16vw, 190px);
+  background: radial-gradient(60% 50% at 78% 22%, rgba(150, 133, 255, 0.42), transparent 70%), radial-gradient(40% 35% at 12% 70%, rgba(197, 240, 106, 0.1), transparent 70%), linear-gradient(180deg, #ebe6ff 0%, #f3f0ff 52%, var(--canvas) 100%); }
+.del-hero .eyebrow { justify-self: center; align-self: center; }
+.del-hero .cloud-bank { bottom: -10%; -webkit-mask-image: linear-gradient(transparent, #000 40%); mask-image: linear-gradient(transparent, #000 40%); }
+/* the cloud bank fades into the page, no seam where the sky ends */
+.del-hero > :not(.sky-hero__sky) { position: relative; z-index: 2; }
+.del-hero::after { content: ''; position: absolute; left: 0; right: 0; bottom: 0; height: 100px; z-index: 1; background: linear-gradient(180deg, rgba(247, 246, 251, 0), var(--canvas)); pointer-events: none; }
+.del-hero__boksie { width: clamp(112px, 12vw, 150px); height: auto; animation: hop 2.6s var(--ease-out) infinite; filter: drop-shadow(0 24px 24px rgba(60, 40, 160, 0.3)); }
+.del-hero h1 { max-width: 12em; }
+.del-hero .lead { margin: 0 auto; text-wrap: balance; max-width: 42ch; }
+@media (max-width: 760px) { .del-hero .lead { max-width: 30ch; } }
+.del-hero .cloud--1 { top: 6%; opacity: 0.5; }
+.del-updated { font-size: 14px; color: var(--stone); }
+.del-body { position: relative; z-index: 2; max-width: 1040px; margin: clamp(-130px, -12vw, -90px) auto 0; padding: 0 var(--gutter) clamp(48px, 6vw, 80px); display: grid; gap: 18px; }
+.del-ways { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; }
+.del-body .card { box-shadow: 0 1px 2px rgba(17, 14, 36, 0.05), 0 30px 60px -36px rgba(60, 40, 160, 0.35); gap: 14px; }
+.del-card__head { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+.del-ico { display: inline-grid; place-items: center; width: 40px; height: 40px; border-radius: 13px; background: var(--lavender); color: var(--violet); }
+.del-ico svg { width: 22px; height: 22px; }
+.del-chip { padding: 6px 12px; border-radius: 999px; background: var(--lime); color: var(--night); font-size: 13px; font-weight: 800; }
+.del-path { display: flex; flex-direction: column; align-items: stretch; margin: 4px 0; padding: 0; list-style: none; }
+.del-path li { display: flex; flex-direction: column; align-items: stretch; }
+.del-path li + li::before { content: ''; width: 2px; height: 10px; margin-left: 20px; background: var(--lavender); }
+.del-path span { display: flex; align-items: center; gap: 8px; padding: 9px 14px 9px 9px; border-radius: 14px; background: var(--canvas); box-shadow: inset 0 0 0 1px rgba(93, 72, 219, 0.14); font-weight: 700; font-size: 15px; }
+.del-path b { display: inline-grid; place-items: center; width: 24px; height: 24px; border-radius: 8px; background: #fff; color: var(--violet); font-size: 13px; box-shadow: inset 0 0 0 1px rgba(93, 72, 219, 0.16); }
+.del-path li:last-child b { background: #fff; color: var(--violet); box-shadow: none; }
+.del-path li:last-child span { background: var(--lavender); color: var(--violet); box-shadow: inset 0 0 0 1.5px var(--violet); }
+.del-card .btn { align-self: flex-start; margin-top: 4px; }
+.del-note { font-size: 14px !important; }
+.del-note a { color: var(--violet); font-weight: 700; }
+.del-list { columns: 2; column-gap: 40px; margin: 6px 0 0; padding: 0; list-style: none; }
+.del-list li { display: flex; align-items: flex-start; gap: 10px; font-size: 16px; line-height: 1.4; break-inside: avoid; margin-bottom: 12px; }
+.del-list svg { flex: none; width: 22px; height: 22px; padding: 3px; border-radius: 999px; background: var(--lavender); color: var(--violet); margin-top: 1px; }
+/* the two lines that matter most for trust: what can't be undone, and that nothing is kept */
+.del-callout { display: flex; align-items: flex-start; gap: 10px; max-width: none !important; margin-top: 4px; padding: 11px 14px; border-radius: 14px; background: var(--lavender); color: #2e2e3a !important; font-weight: 600; font-size: 15px !important; line-height: 1.45; }
+.del-callout a { color: var(--violet); font-weight: 700; }
+.del-callout svg { flex: none; width: 20px; height: 20px; color: var(--violet); margin-top: 1px; }
+.del-small { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; }
+.del-small .card { background: rgba(255, 255, 255, 0.72); box-shadow: inset 0 0 0 1px rgba(93, 72, 219, 0.12); }
+.del-body .card h2 { font-size: clamp(22px, 2vw, 28px); font-weight: 800; letter-spacing: -0.03em; line-height: 1.15; }
+.del-body .del-small h2 { font-size: 21px; }
+.del-small a { color: var(--violet); font-weight: 700; }
+.footer a[aria-current] { color: #fff; }
+.del-back { justify-self: center; display: inline-flex; align-items: center; min-height: 44px; padding: 0 18px; margin-top: 6px; border-radius: 999px; color: var(--violet); font-weight: 700; text-decoration: none; }
+.footer nav a { display: inline-flex; align-items: center; min-height: 44px; }
+.del-nav .nav__links { display: flex; }
+.del-back:hover { text-decoration: underline; }
+@media (max-width: 860px) { .del-nav .btn { margin-left: 0; } }
+/* a phone: the logo is the way home (and the link at the foot), the language stays */
+@media (max-width: 480px) { .del-nav .btn { display: none; } .del-nav .nav__links a { padding: 0 8px; min-height: 44px; display: inline-flex; align-items: center; } }
+.nav .btn { white-space: nowrap; }
+@media (max-width: 760px) {
+  .del-ways, .del-small { grid-template-columns: 1fr; }
+  .del-list { columns: 1; }
+  .del-card .btn { align-self: stretch; justify-content: center; }
+}
+
+.cr-pay { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; }
+.cr-pay .card { gap: 6px; }
+.cr-num { font-size: clamp(40px, 4.4vw, 56px); font-weight: 800; letter-spacing: -0.04em; line-height: 1; color: var(--violet); }
+.cr-pay .card:last-child .cr-num { color: var(--night); }
+.cr-unit { font-weight: 800; font-size: 17px; color: var(--ink); }
+.cr-pay p { font-size: 15px; color: var(--stone); margin: 4px 0 0; }
+.del-list span { text-wrap: pretty; }
+.cr-apply { text-align: center; justify-items: center; display: grid; gap: 12px; }
+.cr-apply .lead { margin: 0 auto; max-width: 40ch; }
+@media (max-width: 760px) { .cr-pay { grid-template-columns: 1fr; } .cr-apply .btn { align-self: stretch; justify-content: center; width: 100%; } }
+@media (max-width: 480px) { .del-nav .btn { display: inline-flex; } }
+/* creators in the programme log in from here (founder, 30 Oct 2026) */
+.cr-login { margin-left: auto; display: inline-flex; align-items: center; min-height: 44px; padding: 0 12px; border-radius: 999px; font-weight: 700; font-size: 15px; color: var(--violet); text-decoration: none; white-space: nowrap; }
+.cr-login:hover { background: rgba(93, 72, 219, 0.08); }
+@media (max-width: 480px) { .del-nav { gap: 6px; } .cr-login { padding: 0 10px; } }
+</style>
+</head>
+<body>
+<a class="skip" href="#indhold">Spring til indhold</a>
+<header class="nav is-day is-top del-nav">
+  <a class="nav__brand" href="/" aria-label="PrepNow, til forsiden">
+    <img src="/img/brand/logo-mark.svg" alt="" width="34" height="34"><span>PrepNow</span>
+  </a>
+  <a class="cr-login" href="/creator/login/">Log ind</a>
+  <a class="btn btn--violet btn--sm" href="mailto:kontakt@prepnow.dk?subject=Bliv%20creator&body=Mit%20TikTok-%20eller%20Instagram-navn%3A%20%40%0AAntal%20f%C3%B8lgere%3A%20%0AHvad%20jeg%20laver%20videoer%20om%3A%20%0A">Skriv til os</a>
+</header>
+<main id="indhold">
+  <section class="del-hero" aria-labelledby="cr-title">
+    <div class="sky-hero__sky" aria-hidden="true">
+      <img class="cloud cloud--1" src="/img/3d/cloud-puff.webp" alt="">
+      <img class="cloud cloud--2" src="/img/3d/cloud-puff.webp" alt="">
+      <img class="cloud cloud--3" src="/img/3d/cloud-puff.webp" alt="">
+      <img class="cloud-bank" src="/img/3d/cloud-bank.webp" alt="">
+    </div>
+    <img class="del-hero__boksie" src="/img/3d/boksie.webp" alt="" width="150" height="145">
+    <span class="eyebrow">For creators</span>
+    <h1 id="cr-title" class="display display--md">Bliv PrepNow-creator</h1>
+    <p class="lead">Lav TikToks eller Reels om billig aftensmad med PrepNow. Du bliver betalt for dine visninger og for hver ny abonnent, du skaffer.</p>
+  </section>
+  <div class="del-body">
+    <div class="cr-pay"><section class="card"><span class="cr-num">10 kr</span><span class="cr-unit">pr. 1.000 visninger</span><p>Samme sats på TikTok og Instagram. Op til 300 kr pr. video, også hvis den ligger begge steder.</p></section><section class="card"><span class="cr-num">50 kr</span><span class="cr-unit">pr. ny abonnent</span><p>Du får 50 kr, når en seer har brugt din kode og betalt for Pro 2 gange. Køber de et helt år, tæller den første betaling. Gratis prøveperioder og rabat i starten tæller ikke som betaling.</p></section><section class="card"><span class="cr-num">Gratis</span><span class="cr-unit">Pro, så længe du er med</span><p>Hele ugens plan og indkøbsliste, så du kan vise appen, som den er.</p></section></div>
+    <div class="del-ways">
+      <section class="card del-card" aria-labelledby="cr-how">
+        <h2 id="cr-how">Sådan virker det</h2>
+        <ol class="del-path"><li><span><b aria-hidden="true">1</b>Skriv til os med dit TikTok- eller Instagram-navn</span></li><li><span><b aria-hidden="true">2</b>Siger vi ja, får du Pro og din kode</span></li><li><span><b aria-hidden="true">3</b>Lav en video om din uge med appen</span></li><li><span><b aria-hidden="true">4</b>Vi siger ok, og du lægger den op</span></li><li><span><b aria-hidden="true">5</b>Efter 14 dage sender du link og skærmbillede af statistikken</span></li><li><span><b aria-hidden="true">6</b>Vi betaler én gang om måneden</span></li></ol>
+      </section>
+      <section class="card del-card" aria-labelledby="cr-who">
+        <h2 id="cr-who">Vi leder efter dig, hvis</h2>
+        <ul class="del-list" style="columns:1"><li><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M5 10.5l3.2 3.2L15 6.8" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span>du er fyldt 18 og laver videoer på dansk</span></li><li><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M5 10.5l3.2 3.2L15 6.8" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span>du har op til 5.000 følgere på TikTok eller Instagram</span></li><li><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M5 10.5l3.2 3.2L15 6.8" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span>du laver indhold om mad, madbudget, tilbud, SU‑mad eller meal prep</span></li><li><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M5 10.5l3.2 3.2L15 6.8" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span>du er ærlig og god til at vise maden</span></li></ul>
+        <p class="del-callout"><svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="8" fill="none" stroke="currentColor" stroke-width="2"/><path d="M10 9v5M10 6.2v.1" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg><span>Du behøver ikke at være stor. Små konti med engagerede følgere er præcis dem, vi leder efter.</span></p>
+      </section>
+    </div>
+    <section class="card" aria-labelledby="cr-rules">
+      <h2 id="cr-rules">Reglerne</h2>
+      <ul class="del-list"><li><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M5 10.5l3.2 3.2L15 6.8" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Skriv "Reklame" først i teksten, og sig det eller vis det i starten af videoen</span></li><li><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M5 10.5l3.2 3.2L15 6.8" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Slå mærkningen til: kommercielt indhold på TikTok, betalt partnerskab med PrepNow på Instagram</span></li><li><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M5 10.5l3.2 3.2L15 6.8" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Vis kun dine egne, rigtige priser og besparelser fra appen</span></li><li><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M5 10.5l3.2 3.2L15 6.8" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Ingen købte visninger, og ingen reklame rettet mod børn og unge under 18. Vi betaler for højst 2 visninger pr. seer</span></li></ul>
+      <p class="del-callout"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 2.5l6 2.4v4.6c0 3.9-2.6 6.7-6 8-3.4-1.3-6-4.1-6-8V4.9z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M7.2 10.2l2 2 3.6-3.8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Du står selv for skatten af pengene. Har du et CVR‑nummer, sender du bare en faktura.</span></p>
+    </section>
+    <section class="card cr-apply" aria-labelledby="cr-apply">
+      <h2 id="cr-apply">Vil du være med?</h2>
+      <p class="lead">Skriv dit TikTok- eller Instagram-navn, antal følgere og hvad du laver videoer om. Vi svarer inden for et par dage.</p>
+      <a class="btn btn--violet" href="mailto:kontakt@prepnow.dk?subject=Bliv%20creator&body=Mit%20TikTok-%20eller%20Instagram-navn%3A%20%40%0AAntal%20f%C3%B8lgere%3A%20%0AHvad%20jeg%20laver%20videoer%20om%3A%20%0A">Jeg vil være med</a>
+      <p class="del-note">eller på <a href="mailto:kontakt@prepnow.dk">kontakt@prepnow.dk</a></p>
+    </section>
+    <a class="del-back" href="/">← Til forsiden</a>
+  </div>
+</main>
+<footer class="footer">
+  <div class="footer__brand"><img src="/img/brand/logo-mark.svg" alt="" width="28" height="28"><span>PrepNow</span></div>
+  <nav aria-label="Juridisk">
+    <a href="/privacy/">Privatlivspolitik</a>
+    <a href="/terms/">Vilkår</a>
+    <a href="/slet-konto/">Slet konto</a>
+    <a href="/creator/" aria-current="page">Bliv creator</a>
+  </nav>
+  <p>PrepNow · CVR 46801822 · <a href="mailto:kontakt@prepnow.dk">kontakt@prepnow.dk</a></p>
+</footer>
+</body>
+</html>

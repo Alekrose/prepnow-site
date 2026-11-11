@@ -1,0 +1,543 @@
+<!doctype html>
+<html lang="da">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; media-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; script-src 'none'">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>PrepNow for organisationer · En medlemsfordel, der bliver brugt hver uge</title>
+<meta name="description" content="Giv jeres medlemmer eller medarbejdere en madplan ud fra ugens tilbud i otte supermarkedskæder. 1 måned gratis, intet at integrere, og I ser kun tal.">
+<meta name="theme-color" content="#f3f0ff">
+<meta property="og:title" content="PrepNow for organisationer · En medlemsfordel, der bliver brugt hver uge">
+<meta property="og:description" content="Giv jeres medlemmer eller medarbejdere en madplan ud fra ugens tilbud i otte supermarkedskæder. 1 måned gratis, intet at integrere, og I ser kun tal.">
+<meta property="og:image" content="https://prepnow.dk/img/og.jpg">
+<meta property="og:url" content="https://prepnow.dk/partnere/">
+<link rel="canonical" href="https://prepnow.dk/partnere/">
+<link rel="icon" href="/img/brand/app-icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/img/brand/favicon-180.png">
+<link rel="preload" href="/fonts/Manrope_800ExtraBold.ttf" as="font" type="font/ttf" crossorigin>
+<link rel="stylesheet" href="/css/site.css?v=407f491c32">
+<style>
+
+.pn-nav { position: absolute; }
+.pn-nav .nav__links a { color: var(--ink); }
+.btn--soft { background: rgba(255, 255, 255, 0.86); color: var(--violet); box-shadow: inset 0 0 0 1.5px rgba(93, 72, 219, 0.28); }
+.btn--soft:hover { background: #fff; box-shadow: inset 0 0 0 1.5px var(--violet); }
+.btn svg { width: 20px; height: 20px; }
+.pn-wrap { max-width: var(--max); margin: 0 auto; }
+.pn-section { padding: clamp(72px, 9vw, 128px) var(--edge); }
+.pn-intro { display: grid; gap: 16px; max-width: 760px; margin-bottom: clamp(36px, 5vw, 56px); }
+.pn-intro--center { margin-left: auto; margin-right: auto; text-align: center; justify-items: center; }
+.pn-intro--center .eyebrow { justify-self: center; }
+
+/* hero: the landing page's sky, with three real screens fanned out */
+.pn-hero { min-height: 0; padding-top: clamp(96px, 11vh, 124px); padding-bottom: clamp(110px, 12vw, 160px); grid-template-columns: minmax(0, 1.12fr) minmax(0, 1fr); }
+/* the sky fades into the page under the numbers, no seam */
+.pn-hero::after { content: ''; position: absolute; left: 0; right: 0; bottom: 0; height: 160px; z-index: 1; background: linear-gradient(180deg, rgba(247, 246, 251, 0), var(--canvas)); pointer-events: none; }
+@media (max-width: 960px) { .pn-hero { grid-template-columns: 1fr; } }
+.pn-hero .sky-hero__title { font-size: clamp(42px, 3.8vw, 62px); }
+.pn-hero .sky-hero__title .line > span { white-space: nowrap; }
+/* the tight heading tracking ate the space before the gradient words (founder, 1 Nov) */
+.pn-hero .sky-hero__title em { margin-left: 0.1em; }
+@media (max-width: 1180px) { .pn-hero .sky-hero__title .line > span { white-space: normal; } }
+.pn-hero .eyebrow { background: rgba(255, 255, 255, 0.8); box-shadow: inset 0 0 0 1px rgba(93, 72, 219, 0.14); opacity: 0; animation: fade-up 0.8s 0.05s var(--ease-out) forwards; }
+.pn-hero .sky-hero__cta .btn { min-height: 56px; padding: 0 26px; font-size: 17px; }
+.pn-proof { display: flex; flex-wrap: wrap; gap: 10px 22px; margin: 4px 0 0; padding: 0; list-style: none; opacity: 0; animation: fade-up 0.9s 0.75s var(--ease-out) forwards; }
+.pn-proof li { display: inline-flex; align-items: center; gap: 8px; font-size: 15px; font-weight: 700; color: #3b3850; }
+.pn-proof svg { width: 18px; height: 18px; color: var(--ink); }
+.pn-proof .pn-ok { display: inline-grid; place-items: center; width: 20px; height: 20px; border-radius: 99px; background: var(--leaf); color: #fff; }
+.pn-proof .pn-ok svg { width: 14px; height: 14px; color: #fff; }
+.pn-stage { position: relative; z-index: 2; height: min(64vh, 600px); min-height: 500px; }
+.pn-hint { font-size: 14px; font-weight: 600; color: var(--stone); }
+.pn-fan { position: absolute; top: 50%; width: min(250px, 38%); translate: 0 -50%; }
+.pn-fan .phone { box-shadow: inset 0 0 0 1.5px rgba(255, 255, 255, 0.16), inset 0 0 0 4px #0a0816, 0 50px 80px -40px rgba(60, 40, 160, 0.6), 0 18px 36px -18px rgba(17, 14, 36, 0.35); }
+.pn-fan--l { left: 4%; transform: rotate(-9deg) scale(0.86); animation: pn-in-l 1.1s 0.35s var(--ease-out) both; }
+.pn-fan--r { right: 4%; transform: rotate(9deg) scale(0.86); animation: pn-in-r 1.1s 0.45s var(--ease-out) both; }
+.pn-fan--c { left: 50%; margin-left: calc(min(250px, 38%) / -2); z-index: 2; width: min(270px, 41%); margin-left: calc(min(270px, 41%) / -2); animation: rise 1.1s 0.2s var(--ease-out) both; }
+@keyframes pn-in-l { from { opacity: 0; transform: rotate(-2deg) scale(0.8) translateX(60px); } }
+@keyframes pn-in-r { from { opacity: 0; transform: rotate(2deg) scale(0.8) translateX(-60px); } }
+.pn-ticket { position: absolute; z-index: 3; left: -2%; bottom: 9%; display: grid; grid-template-columns: auto 1fr; align-items: center; gap: 12px; padding: 12px 18px 12px 12px; border-radius: 22px; background: rgba(255, 255, 255, 0.94); box-shadow: 0 24px 50px -22px rgba(60, 40, 160, 0.6), inset 0 0 0 1px rgba(255, 255, 255, 0.9); animation: pop 0.9s 1.1s var(--spring) both; }
+.pn-ticket__ico { display: grid; place-items: center; width: 48px; height: 48px; border-radius: 15px; background: var(--lime); color: var(--night); }
+.pn-ticket__ico svg { width: 26px; height: 26px; }
+.pn-ticket small { display: block; font-size: 12px; font-weight: 800; letter-spacing: 0.05em; text-transform: uppercase; color: var(--violet); }
+.pn-ticket b { display: block; font-size: 19px; font-weight: 800; letter-spacing: -0.02em; line-height: 1.15; }
+.pn-chip { position: absolute; z-index: 3; right: -1%; top: 12%; display: flex; align-items: center; gap: 10px; padding: 8px 14px 8px 8px; border-radius: 20px; background: rgba(255, 255, 255, 0.94); box-shadow: 0 20px 40px -20px rgba(60, 40, 160, 0.55); animation: pop 0.9s 1.3s var(--spring) both; }
+.pn-chip img { width: 48px; height: 48px; border-radius: 14px; object-fit: cover; }
+.pn-chip b { display: block; font-size: 14px; letter-spacing: -0.01em; white-space: nowrap; }
+.pn-chip span { display: inline-block; margin-top: 4px; font-size: 12px; font-weight: 800; padding: 3px 8px; border-radius: 99px; background: #e6f8ef; color: #0f7a4f; }
+.pn-boksie { position: absolute; z-index: 3; right: 2%; bottom: 0; width: min(120px, 18%); animation: pop 0.9s 1.5s var(--spring) both; filter: drop-shadow(0 18px 18px rgba(60, 40, 160, 0.25)); }
+
+/* the numbers, lifted onto the hero's edge */
+.pn-facts { position: relative; z-index: 3; max-width: var(--max); margin: clamp(-110px, -9vw, -80px) auto 0; padding: 0 var(--gutter); }
+.pn-facts dl { margin: 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); border-radius: 30px; background: #fff; box-shadow: 0 1px 2px rgba(17, 14, 36, 0.05), 0 40px 80px -40px rgba(60, 40, 160, 0.45); overflow: hidden; }
+.pn-facts div { display: grid; gap: 4px; align-content: start; padding: clamp(22px, 2.6vw, 32px); }
+.pn-facts div + div { box-shadow: inset 1px 0 0 var(--line, #ececf3); }
+.pn-facts dd { margin: 0; order: -1; font-weight: 800; font-size: clamp(34px, 3.6vw, 52px); letter-spacing: -0.045em; line-height: 1; color: var(--violet); font-variant-numeric: tabular-nums; }
+.pn-facts dd small { font-size: 0.42em; letter-spacing: -0.01em; margin-right: 4px; color: var(--ink); }
+.pn-facts dt { font-size: 15.5px; font-weight: 700; color: var(--ink); line-height: 1.35; text-wrap: balance; }
+.pn-facts dt span { display: block; font-weight: 500; font-size: 14px; color: var(--stone); margin-top: 2px; }
+
+/* three steps */
+.pn-steps { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; counter-reset: step; }
+.pn-step { position: relative; display: flex; flex-direction: column; gap: 10px; padding: clamp(24px, 2.4vw, 32px); border-radius: 32px; background: #fff; box-shadow: 0 1px 2px rgba(17, 14, 36, 0.05), 0 30px 60px -44px rgba(60, 40, 160, 0.45); }
+.pn-step__top { display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px; }
+.pn-step__n { display: grid; place-items: center; width: 44px; height: 44px; border-radius: 15px; background: var(--violet); color: #fff; font-weight: 800; font-size: 19px; transform: rotate(-6deg); box-shadow: 0 10px 22px -10px rgba(93, 72, 219, 0.8); }
+.pn-step__ico { display: grid; place-items: center; width: 44px; height: 44px; border-radius: 15px; background: var(--lavender); color: var(--violet); }
+.pn-step__ico svg { width: 24px; height: 24px; }
+.pn-step h3 { font-size: clamp(21px, 1.9vw, 25px); font-weight: 800; letter-spacing: -0.03em; line-height: 1.15; text-wrap: balance; }
+.pn-step p { color: var(--stone); font-size: 16px; }
+.pn-step__show { margin-top: auto; padding-top: 18px; }
+.pn-code { display: flex; align-items: center; justify-content: space-between; gap: 10px; padding: 12px 12px 12px 16px; border-radius: 18px; background: var(--canvas); box-shadow: inset 0 0 0 1.5px rgba(93, 72, 219, 0.22); font-weight: 800; letter-spacing: 0.08em; font-size: 15px; color: var(--ink); }
+.pn-code span:last-child { letter-spacing: 0; font-size: 13px; padding: 6px 10px; border-radius: 99px; background: var(--violet); color: #fff; }
+.pn-where { display: flex; flex-wrap: wrap; gap: 8px; }
+.pn-where span { padding: 9px 14px; border-radius: 999px; background: var(--canvas); box-shadow: inset 0 0 0 1px rgba(93, 72, 219, 0.16); font-weight: 700; font-size: 14px; }
+.pn-free { display: flex; align-items: center; gap: 12px; padding: 12px 16px; border-radius: 18px; background: var(--canvas); box-shadow: inset 0 0 0 1px rgba(93, 72, 219, 0.16); }
+.pn-free b { white-space: nowrap; font-size: 15px; font-weight: 800; color: var(--violet); }
+.pn-free span { font-size: 14px; color: #4a4858; line-height: 1.4; font-weight: 600; }
+.pn-strip { margin-top: 22px; display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap; padding: 18px 18px 18px 28px; border-radius: 28px; background: var(--lavender); }
+.pn-strip p { font-weight: 800; font-size: 19px; letter-spacing: -0.02em; line-height: 1.3; }
+.pn-strip p span { display: block; font-weight: 600; font-size: 15px; color: var(--stone); letter-spacing: 0; }
+
+/* what the member gets */
+.pn-gets { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: 18px; }
+.pn-gets .card { border-radius: 32px; box-shadow: 0 1px 2px rgba(17, 14, 36, 0.05), 0 30px 60px -44px rgba(60, 40, 160, 0.4); }
+.pn-g-chains { grid-column: span 7; background: var(--lavender) !important; }
+.pn-g-goals { grid-column: span 5; }
+.pn-g-list { grid-column: span 5; background: var(--night) !important; color: #fff; display: grid !important; grid-template-columns: 1.2fr 1fr; align-items: center; gap: 22px; min-height: 340px; }
+.pn-g-list p { color: var(--on-night-soft) !important; }
+.pn-g-list .card__text { display: grid; gap: 12px; max-width: 380px; }
+.pn-g-list .phone { width: 100%; max-width: 210px; justify-self: end; }
+.pn-list-pts { list-style: none; margin: 6px 0 0; padding: 0; display: grid; gap: 8px; }
+.pn-list-pts li { display: flex; align-items: center; gap: 9px; font-size: 14.5px; font-weight: 700; color: #fff; }
+.pn-list-pts svg { flex: none; width: 20px; height: 20px; padding: 3px; border-radius: 99px; background: rgba(197, 240, 106, 0.16); color: var(--lime); }
+.pn-g-lib { grid-column: span 7; }
+.pn-chains { list-style: none; margin: 6px 0 0; padding: 0; display: flex; flex-wrap: wrap; gap: 8px; }
+.pn-chains li { display: inline-flex; align-items: center; gap: 8px; padding: 9px 14px 9px 11px; border-radius: 999px; background: #fff; font-weight: 800; font-size: 15px; letter-spacing: -0.01em; box-shadow: 0 8px 20px -16px rgba(17, 14, 36, 0.45); }
+.pn-chains i { width: 10px; height: 10px; border-radius: 50%; background: var(--c); }
+.pn-tags { margin-top: auto; padding-top: 22px; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+.pn-tags .tag { grid-template-columns: minmax(0, 1fr) auto; width: 100%; box-shadow: 0 18px 34px -20px rgba(17, 14, 36, 0.5), 0 1px 3px rgba(17, 14, 36, 0.08); }
+.pn-tags .tag__name { overflow: hidden; text-overflow: ellipsis; }
+.pn-tags__note { grid-column: 1 / -1; order: -1; font-size: 13px; font-weight: 800; letter-spacing: 0.04em; text-transform: uppercase; color: var(--stone); }
+.pn-goals { list-style: none; margin: 8px 0 0; padding: 0; display: grid; gap: 8px; }
+.pn-hero .sky-hero__lead { text-wrap: pretty; }
+.pn-day { margin-top: auto; padding-top: 16px; }
+.pn-day > div { display: flex; align-items: center; gap: 12px; padding: 10px 14px 10px 10px; border-radius: 20px; background: var(--lavender); }
+.pn-day img { width: 54px; height: 54px; border-radius: 14px; object-fit: cover; }
+.pn-day small { display: block; font-size: 11.5px; font-weight: 800; letter-spacing: 0.05em; text-transform: uppercase; color: var(--violet); }
+.pn-day b { display: block; font-size: 15px; font-weight: 800; letter-spacing: -0.01em; }
+.pn-day p { margin: 0; color: var(--ink) !important; }
+.pn-day__nums { margin-left: auto; display: flex; gap: 6px; }
+.pn-day__nums span { padding: 6px 10px; border-radius: 999px; background: #fff; font-size: 13px; font-weight: 800; white-space: nowrap; }
+.pn-goals li { display: flex; align-items: center; gap: 12px; padding: 10px 12px; border-radius: 18px; background: var(--canvas); font-weight: 800; font-size: 16px; }
+.pn-goals span { display: grid; place-items: center; width: 36px; height: 36px; border-radius: 12px; background: #fff; color: var(--violet); box-shadow: 0 6px 14px -10px rgba(93, 72, 219, 0.7); }
+.pn-goals svg { width: 20px; height: 20px; }
+.pn-goals small { margin-left: auto; font-size: 13px; font-weight: 600; color: var(--stone); }
+.pn-lib { margin-top: auto; padding-top: 16px; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; }
+.pn-lib figure { margin: 0; position: relative; border-radius: 18px; overflow: hidden; background: var(--lilac); }
+.pn-lib img { width: 100%; height: auto; aspect-ratio: 900 / 672; object-fit: cover; }
+.pn-lib figcaption { position: absolute; left: 8px; right: 8px; bottom: 8px; padding: 6px 9px; border-radius: 11px; background: rgba(255, 255, 255, 0.92); backdrop-filter: blur(8px); font-size: 12px; font-weight: 700; line-height: 1.25; }
+.pn-lib figcaption span { display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+.pn-big { display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap; }
+.pn-big b { font-size: clamp(40px, 4vw, 56px); font-weight: 800; letter-spacing: -0.05em; line-height: 1; color: var(--violet); }
+.pn-g-list .pn-big b { color: var(--lime); }
+.pn-big span { font-weight: 800; font-size: 17px; }
+
+/* two models */
+.pn-models { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; align-items: stretch; }
+.pn-model { position: relative; display: flex; flex-direction: column; gap: 12px; padding: clamp(28px, 3vw, 40px); border-radius: 34px; background: #fff; box-shadow: inset 0 0 0 2px var(--violet), 0 40px 80px -46px rgba(93, 72, 219, 0.7); }
+.pn-model--night { background: linear-gradient(170deg, #241c5c, var(--night) 60%); color: #fff; box-shadow: inset 0 0 0 1px var(--on-night-line), 0 40px 80px -46px rgba(17, 14, 36, 0.8); }
+.pn-model__flag { position: absolute; top: -14px; left: 32px; padding: 7px 13px; border-radius: 999px; background: var(--lime); color: var(--night); font-size: 13px; font-weight: 800; box-shadow: 0 10px 24px -12px rgba(120, 160, 40, 0.8); }
+.pn-model__flag--soft { background: #fff; color: var(--night); box-shadow: 0 10px 24px -12px rgba(0, 0, 0, 0.6); }
+.pn-model h3 { font-size: clamp(26px, 2.4vw, 34px); font-weight: 800; letter-spacing: -0.035em; }
+.pn-model__lead { color: var(--stone); font-size: 17px; }
+.pn-model--night .pn-model__lead { color: var(--on-night-soft); }
+.pn-price { display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap; padding: 16px 0 18px; border-bottom: 1px solid var(--line, #ececf3); margin-bottom: 6px; }
+.pn-model--night .pn-price { border-color: var(--on-night-line); }
+.pn-price b { font-size: clamp(46px, 4.6vw, 64px); font-weight: 800; letter-spacing: -0.05em; line-height: 1; color: var(--violet); }
+.pn-model--night .pn-price b { color: var(--lime); }
+.pn-price span { font-weight: 700; color: var(--stone); font-size: 16px; line-height: 1.3; }
+.pn-model--night .pn-price span { color: var(--on-night-soft); }
+.pn-ticks { list-style: none; margin: 0 0 8px; padding: 0; display: grid; gap: 12px; }
+.pn-ticks li { display: flex; align-items: flex-start; gap: 12px; font-weight: 600; font-size: 16.5px; line-height: 1.45; }
+.pn-ticks svg { flex: none; width: 24px; height: 24px; padding: 3px; border-radius: 99px; background: var(--leaf); color: #fff; margin-top: 0; }
+.pn-model--night .pn-ticks li { color: var(--on-night-soft); font-weight: 500; }
+.pn-model--night .pn-ticks svg { background: rgba(197, 240, 106, 0.16); color: var(--lime); }
+.pn-model .btn { margin-top: auto; align-self: flex-start; }
+.pn-model__note { font-size: 14px; color: var(--on-night-faint); margin-bottom: 4px; }
+.pn-models__note { margin-top: 18px; text-align: center; font-size: 14px; color: var(--stone); }
+
+/* privacy, at night */
+.pn-privacy { position: relative; overflow: hidden; isolation: isolate; padding: clamp(80px, 10vw, 140px) var(--edge); background: linear-gradient(180deg, #1d1650 0%, #15103a 45%, var(--night) 100%); color: #fff; }
+.pn-privacy__aurora { position: absolute; inset: -20%; z-index: -1; background: radial-gradient(35% 30% at 80% 25%, rgba(93, 72, 219, 0.55), transparent 70%), radial-gradient(30% 25% at 12% 85%, rgba(197, 240, 106, 0.1), transparent 70%); filter: blur(20px); }
+.pn-privacy .lead { color: var(--on-night-soft); }
+.pn-privacy .eyebrow { background: rgba(197, 240, 106, 0.14); color: var(--lime); }
+.pn-see { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; }
+.pn-see__foot { margin-top: auto; font-size: 14px; color: var(--on-night-faint); }
+.pn-see > div { padding: clamp(26px, 3vw, 36px); border-radius: 30px; background: rgba(255, 255, 255, 0.06); box-shadow: inset 0 0 0 1px var(--on-night-line); backdrop-filter: blur(6px); display: grid; gap: 18px; align-content: start; }
+.pn-see h3 { font-size: 22px; font-weight: 800; letter-spacing: -0.02em; }
+.pn-see ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 12px; }
+.pn-see li { display: flex; align-items: center; gap: 12px; padding: 14px 16px; border-radius: 18px; background: rgba(255, 255, 255, 0.06); font-weight: 700; font-size: 16.5px; }
+.pn-see li svg { flex: none; width: 26px; height: 26px; padding: 4px; border-radius: 99px; }
+.pn-see__yes li svg { background: var(--lime); color: var(--night); }
+.pn-see__yes li em { display: none; margin-left: auto; font-style: normal; font-size: 13px; font-weight: 800; padding: 4px 10px; border-radius: 99px; background: rgba(197, 240, 106, 0.16); color: var(--lime); }
+.pn-see__no li { color: var(--on-night-soft); }
+.pn-see__no li svg { background: rgba(255, 255, 255, 0.1); color: #ff8f8f; }
+.pn-promises { margin-top: 18px; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; }
+.pn-promise { display: grid; grid-template-columns: auto 1fr; gap: 6px 14px; align-items: start; padding: 22px; border-radius: 24px; box-shadow: inset 0 0 0 1px var(--on-night-line); }
+.pn-promise span { grid-row: span 2; display: grid; place-items: center; width: 44px; height: 44px; border-radius: 14px; background: rgba(150, 133, 255, 0.18); color: #c9bfff; }
+.pn-promise span svg { width: 24px; height: 24px; }
+.pn-promise b { font-size: 17px; }
+.pn-promise p { font-size: 15px; color: var(--on-night-soft); line-height: 1.45; }
+.pn-privacy__note { margin-top: 26px; font-size: 14px; color: var(--on-night-faint); }
+.pn-privacy__note a { color: var(--on-night-soft); font-weight: 700; }
+
+/* who is behind it */
+.pn-who-sec { padding-bottom: 0; }
+.pn-faq { padding-bottom: 0; }
+.pn-who { display: grid; grid-template-columns: auto 1fr; gap: clamp(22px, 3vw, 40px); align-items: center; max-width: 920px; margin: 0 auto; padding: clamp(28px, 3.4vw, 44px); border-radius: 34px; background: #fff; box-shadow: 0 1px 2px rgba(17, 14, 36, 0.05), 0 30px 60px -44px rgba(60, 40, 160, 0.45); }
+.pn-avatar { position: relative; display: grid; place-items: center; width: clamp(96px, 10vw, 128px); aspect-ratio: 1; border-radius: 36px; background: linear-gradient(150deg, #7a66f0, var(--violet) 55%, #3d2db0); color: #fff; font-weight: 800; font-size: clamp(34px, 3.6vw, 44px); letter-spacing: -0.04em; box-shadow: 0 24px 40px -22px rgba(93, 72, 219, 0.9); }
+.pn-avatar img { position: absolute; right: -10px; bottom: -10px; width: 44px; height: 44px; padding: 7px; border-radius: 14px; background: #fff; box-shadow: 0 8px 20px -10px rgba(17, 14, 36, 0.4); }
+.pn-who__text { display: grid; gap: 10px; }
+.pn-who h2 { font-size: clamp(26px, 2.6vw, 34px); font-weight: 800; letter-spacing: -0.035em; line-height: 1.1; }
+.pn-who__role { font-weight: 700; color: var(--violet); }
+.pn-who p { color: var(--stone); font-size: 17px; max-width: 46em; }
+.pn-who__facts { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 4px; }
+.pn-who__facts span { display: inline-flex; align-items: center; gap: 6px; padding: 6px 11px; border-radius: 999px; background: var(--canvas); font-size: 13px; font-weight: 700; color: #3b3850; white-space: nowrap; }
+.pn-who__facts svg { width: 15px; height: 15px; }
+
+/* contact: the landing page's closing sky */
+.pn-cta { padding-top: clamp(40px, 5vw, 64px); }
+.pn-cta .cta__boksie { width: clamp(120px, 12vw, 160px); }
+.pn-cta h2 { max-width: 14em; }
+.pn-cta .btn { min-height: 58px; padding: 0 30px; font-size: 18px; }
+.pn-mail { display: grid; gap: 4px; justify-items: center; margin-top: 4px; }
+.pn-mail span { font-size: 14px; font-weight: 700; color: var(--stone); }
+.pn-mail a { font-size: clamp(20px, 2vw, 24px); font-weight: 800; letter-spacing: -0.02em; color: var(--violet); text-decoration: none; }
+.pn-mail a:hover { text-decoration: underline; }
+.footer a[aria-current] { color: #fff; }
+.footer nav { flex-wrap: wrap; gap: 0 22px; }
+.footer nav a { display: inline-flex; align-items: center; min-height: 44px; }
+
+@media (max-width: 1080px) {
+  .pn-g-chains, .pn-g-goals, .pn-g-list, .pn-g-lib { grid-column: span 6; }
+  .pn-g-list .phone { max-width: 170px; }
+}
+@media (max-width: 960px) {
+  .pn-stage { width: min(560px, 100%); justify-self: center; height: 520px; min-height: 0; }
+  .pn-proof { justify-content: center; }
+  .pn-hero .eyebrow { justify-self: center; }
+  .pn-facts dl { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .pn-facts div:nth-child(3) { box-shadow: inset 0 1px 0 var(--line, #ececf3); }
+  .pn-facts div:nth-child(4) { box-shadow: inset 1px 1px 0 var(--line, #ececf3); }
+  .pn-steps { grid-template-columns: 1fr; }
+  .pn-models, .pn-see, .pn-promises { grid-template-columns: 1fr; }
+  .pn-model { padding-top: 36px; }
+}
+@media (max-width: 860px) { .pn-nav .btn { margin-left: auto; } }
+@media (max-width: 720px) {
+  .pn-gets { grid-template-columns: 1fr; }
+  .pn-g-chains, .pn-g-goals, .pn-g-list, .pn-g-lib { grid-column: auto; }
+  .pn-g-list { min-height: 0; }
+  .pn-lib { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .pn-lib figure:nth-child(n + 5) { display: none; }
+  .pn-who { grid-template-columns: 1fr; justify-items: start; }
+}
+@media (max-width: 560px) {
+  .pn-hero { padding-bottom: 120px; }
+  .pn-hero .sky-hero__title { font-size: clamp(36px, 10.4vw, 44px); }
+  .pn-hero .sky-hero__cta { width: 100%; }
+  .pn-hero .sky-hero__cta .btn { flex: 1 1 100%; justify-content: center; }
+  .pn-proof { gap: 8px 14px; }
+  .pn-proof li { font-size: 13.5px; }
+  .pn-stage { height: 420px; }
+  .pn-fan { width: 150px; }
+  .pn-fan--c { width: 172px; margin-left: -86px; }
+  .pn-fan--l { left: 0; }
+  .pn-fan--r { right: 0; }
+  .pn-ticket { left: 0; bottom: 4%; padding: 9px 14px 9px 9px; gap: 10px; border-radius: 18px; }
+  .pn-ticket__ico { width: 38px; height: 38px; border-radius: 12px; }
+  .pn-ticket b { font-size: 16px; }
+  .pn-ticket small { font-size: 10.5px; }
+  .pn-chip { top: 4%; right: 0; }
+  .pn-chip img { width: 40px; height: 40px; }
+  .pn-chip b { font-size: 12.5px; }
+  .pn-boksie { width: 76px; right: 0; bottom: -2%; }
+  .pn-facts { margin-top: -84px; }
+  .pn-facts dl { border-radius: 26px; }
+  .pn-facts div { padding: 18px 16px; }
+  .pn-facts dd { font-size: 32px; }
+  .pn-facts dt { font-size: 14px; }
+  .pn-facts dt span { font-size: 12.5px; }
+  .pn-g-list { grid-template-columns: 1.2fr 1fr; }
+  .pn-g-list .phone { max-width: 150px; }
+  .pn-model .btn { align-self: stretch; justify-content: center; }
+  .pn-cta .btn { width: 100%; justify-content: center; }
+  .pn-mail a { font-size: 20px; }
+  .pn-nav .btn { padding: 0 14px; }
+}
+@media (max-width: 380px) { .pn-nav .nav__brand span { display: none; } }
+@media (max-width: 560px) {
+  .pn-hero .sky-hero__cta .btn--soft { flex: 0 0 auto; min-height: 44px; margin: 0 auto; background: none; box-shadow: none; padding: 0 12px; font-size: 16px; }
+  .pn-stage { height: 360px; }
+  .pn-g-list { grid-template-columns: 1fr; align-items: end; padding-bottom: 0 !important; }
+  .pn-g-list .phone { justify-self: center; max-width: 220px; margin-bottom: -38%; }
+  .pn-day__nums { flex-direction: column; align-items: flex-end; }
+  .pn-day__meal { display: none; }
+  .pn-step { padding: 22px 20px; }
+  .pn-strip { padding: 20px; }
+  .pn-strip .btn { width: 100%; justify-content: center; }
+  .pn-tags { grid-template-columns: 1fr; gap: 10px; }
+  .pn-tags .tag:nth-child(n + 4) { display: none; }
+  .pn-who__facts { gap: 5px; }
+  .pn-who__facts span { padding: 5px 9px; gap: 5px; }
+  .pn-who { padding-left: 22px; padding-right: 22px; }
+}
+</style>
+</head>
+<body>
+<a class="skip" href="#indhold">Spring til indhold</a>
+<header class="nav is-day is-top pn-nav">
+  <a class="nav__brand" href="/" aria-label="PrepNow, til forsiden">
+    <img src="/img/brand/logo-mark.svg" alt="" width="34" height="34"><span>PrepNow</span>
+  </a>
+  <nav class="nav__links" aria-label="Sektioner">
+    <a href="#saadan">Sådan virker det</a>
+    <a href="#modeller">Modeller</a>
+    <a href="#data">Data</a>
+    <a href="#kontakt">Kontakt</a>
+  </nav>
+  <a class="btn btn--violet btn--sm" href="mailto:kontakt@prepnow.dk?subject=10%20minutter%20om%20PrepNow%20til%20vores%20medlemmer&body=Hej%20Thomas%0A%0AVi%20vil%20gerne%20h%C3%B8re%20mere%20om%20PrepNow%20som%20medlemsfordel.%0A%0AOrganisation%3A%20%0ACa.%20antal%20medlemmer%3A%20%0ADet%20passer%20os%20bedst%20at%20tale%3A%20%0A%0AVenlig%20hilsen%0A">Book 10 min</a>
+</header>
+<main id="indhold">
+  <section class="sky-hero pn-hero" aria-labelledby="pn-title">
+    <div class="sky-hero__sky" aria-hidden="true">
+      <img class="cloud cloud--1" src="/img/3d/cloud-puff.webp" alt="">
+      <img class="cloud cloud--2" src="/img/3d/cloud-puff.webp" alt="">
+      <img class="cloud cloud--3" src="/img/3d/cloud-puff.webp" alt="">
+      <img class="cloud-bank" src="/img/3d/cloud-bank.webp" alt="">
+    </div>
+    <div class="sky-hero__copy">
+      <span class="eyebrow">For organisationer</span>
+      <h1 id="pn-title" class="display sky-hero__title">
+        <span class="line"><span>En medlemsfordel,</span></span>
+        <span class="line"><span>der bliver brugt <em>hver uge.</em></span></span>
+      </h1>
+      <p class="sky-hero__lead">Madplan og indkøbsliste ud fra ugens tilbud i 8 supermarkedskæder. Jeres medlemmer får 1 måned gratis, og I deler bare et link.</p>
+      <div class="sky-hero__cta">
+        <a class="btn btn--violet" href="mailto:kontakt@prepnow.dk?subject=10%20minutter%20om%20PrepNow%20til%20vores%20medlemmer&body=Hej%20Thomas%0A%0AVi%20vil%20gerne%20h%C3%B8re%20mere%20om%20PrepNow%20som%20medlemsfordel.%0A%0AOrganisation%3A%20%0ACa.%20antal%20medlemmer%3A%20%0ADet%20passer%20os%20bedst%20at%20tale%3A%20%0A%0AVenlig%20hilsen%0A"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5.5" width="18" height="13" rx="3" fill="none" stroke="currentColor" stroke-width="2"/><path d="M4.5 7.5l7.5 6 7.5-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>Book 10 minutter</a>
+        <a class="btn btn--soft" href="#modeller">Se de to modeller</a>
+      </div>
+      <ul class="pn-proof">
+        <li><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M16.4 12.6c0-2.6 2.1-3.8 2.2-3.9-1.2-1.8-3.1-2-3.7-2-1.6-.2-3.1.9-3.9.9-.8 0-2-.9-3.4-.9-1.7 0-3.3 1-4.2 2.6-1.8 3.1-.5 7.7 1.3 10.2.9 1.2 1.9 2.6 3.2 2.6 1.3-.1 1.8-.8 3.3-.8s2 .8 3.4.8c1.4 0 2.3-1.3 3.1-2.5 1-1.4 1.4-2.8 1.4-2.9 0 0-2.7-1-2.7-4.1zM13.9 5c.7-.9 1.2-2 1-3.2-1 0-2.3.7-3 1.6-.7.8-1.2 2-1.1 3.1 1.2.1 2.3-.6 3.1-1.5z"/></svg><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M4.3 2.4c-.3.3-.4.7-.4 1.2v16.8c0 .5.1.9.4 1.2l9.4-9.6-9.4-9.6zm10.6 10.8l2.7 2.8-11.4 6.5c-.5.3-1 .3-1.4.1l10.1-9.4zm0-2.4L4.8 1.4c.4-.2.9-.2 1.4.1l11.4 6.5-2.7 2.8zm4.1-1.9l3 1.7c.9.5.9 1.4 0 1.9l-3 1.7-2.9-2.7 2.9-2.6z"/></svg>Live i App Store og Google Play</li>
+        <li><span class="pn-ok"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M5 10.5l3.2 3.2L15 6.8" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Gratis for jer</li>
+        <li><span class="pn-ok"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M5 10.5l3.2 3.2L15 6.8" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Klar på en uge</li>
+      </ul>
+    </div>
+    <div class="pn-stage" aria-hidden="true">
+      <div class="glow-disc"></div>
+      <div class="pn-fan pn-fan--l"><div class="phone " data-tone="dark"><div class="phone__screen"><img src="/img/v2/home.webp" alt="" width="390" height="844"></div><span class="phone__island"></span></div></div>
+      <div class="pn-fan pn-fan--r"><div class="phone " data-tone="dark"><div class="phone__screen"><img src="/img/partnere/shop.webp" alt="" width="390" height="844"></div><span class="phone__island"></span></div></div>
+      <div class="pn-fan pn-fan--c"><div class="phone " data-tone="dark"><div class="phone__screen"><img src="/img/v2/plan-pro.webp" alt="" width="390" height="844"></div><span class="phone__island"></span></div></div>
+      <div class="pn-ticket"><span class="pn-ticket__ico"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="9" width="16" height="11" rx="2.5" fill="none" stroke="currentColor" stroke-width="2"/><path d="M3 9h18M12 9v11M12 9c-1.5-3.5-5.5-4-5.5-1.5S12 9 12 9zm0 0c1.5-3.5 5.5-4 5.5-1.5S12 9 12 9z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg></span><div><small>Medlemsfordel</small><b>1 måned gratis</b></div></div>
+      <div class="pn-chip"><img src="/img/dish/lib-d2c8f902cdb6.webp" alt=""><div><b>Ovnbagte frikadeller</b><span>8 kr pr. portion</span></div></div>
+      <img class="pn-boksie" src="/img/3d/boksie.webp" alt="" width="150" height="145">
+    </div>
+  </section>
+
+  <div class="pn-facts">
+    <dl>
+      <div><dt>supermarkedskæder<span>Netto, REMA 1000, Lidl og 5 andre</span></dt><dd>8</dd></div>
+      <div><dt>madtilbud hver uge<span>ugens plan bygges ud fra dem</span></dt><dd>2.000+</dd></div>
+      <div><dt>gennemtjekkede aftensretter<span>plus morgenmad og frokost</span></dt><dd>2.100+</dd></div>
+      <div><dt>for ugens billigste aftensmad<span>pr. portion, hver uge siden uge 40</span></dt><dd><small>under</small>10 kr</dd></div>
+    </dl>
+  </div>
+
+  <section class="pn-section" id="saadan" aria-labelledby="how-title">
+    <div class="pn-wrap">
+      <div class="pn-intro">
+        <span class="eyebrow">Sådan virker det</span>
+        <h2 id="how-title" class="display display--md">Tre trin. Intet at integrere.</h2>
+        <p class="lead">Medlemsfordelen kræver ingen integration og ingen faktura. I deler et tilbud med jeres medlemmer, og vi står for resten.</p>
+      </div>
+      <ol class="pn-steps">
+        <li class="pn-step">
+          <div class="pn-step__top"><span class="pn-step__n">1</span><span class="pn-step__ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7.5A2.5 2.5 0 0 1 6.5 5h11A2.5 2.5 0 0 1 20 7.5v1.2a2.3 2.3 0 0 0 0 4.6v1.2a2.5 2.5 0 0 1-2.5 2.5h-11A2.5 2.5 0 0 1 4 14.5v-1.2a2.3 2.3 0 0 0 0-4.6z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M14 5.5v11" stroke="currentColor" stroke-width="2" stroke-dasharray="2 2.4"/></svg></span></div>
+          <h3>Vi sender jer koder eller et link</h3>
+          <p>Gratiskoder fra App Store og Google Play, som medlemmerne indløser direkte på telefonen.</p>
+          <div class="pn-step__show" aria-hidden="true"><div class="pn-code"><span>JERES-KODE</span><span>1 md. gratis</span></div></div>
+        </li>
+        <li class="pn-step">
+          <div class="pn-step__top"><span class="pn-step__n">2</span><span class="pn-step__ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12.5l15-7.5-4 15-3.6-5.9z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M11.4 14.1L19 5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span></div>
+          <h3>I deler det, hvor medlemmerne er</h3>
+          <p>I nyhedsbrevet, i jeres app, på intranettet eller ved et arrangement. Vi skriver gerne teksten til jer.</p>
+          <div class="pn-step__show" aria-hidden="true"><div class="pn-where"><span>Nyhedsbrev</span><span>Medlemsapp</span><span>Intranet</span></div></div>
+        </li>
+        <li class="pn-step">
+          <div class="pn-step__top"><span class="pn-step__n">3</span><span class="pn-step__ico"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="9" width="16" height="11" rx="2.5" fill="none" stroke="currentColor" stroke-width="2"/><path d="M3 9h18M12 9v11M12 9c-1.5-3.5-5.5-4-5.5-1.5S12 9 12 9zm0 0c1.5-3.5 5.5-4 5.5-1.5S12 9 12 9z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg></span></div>
+          <h3>Medlemmet får 1 måned gratis</h3>
+          <p>Fire gange den normale prøveperiode på 7 dage. Bagefter kan de fortsætte for egen regning, studerende til studieprisen.</p>
+          <div class="pn-step__show" aria-hidden="true"><div class="pn-free"><b>Pris derefter</b><span>49 kr/md, studerende 29 kr. Kan opsiges når som helst.</span></div></div>
+        </li>
+      </ol>
+      <div class="pn-strip"><p>Skal vi tage de ti minutter?<span>Jeg viser appen og hører, hvad jeres medlemmer har brug for.</span></p><a class="btn btn--violet" href="mailto:kontakt@prepnow.dk?subject=10%20minutter%20om%20PrepNow%20til%20vores%20medlemmer&body=Hej%20Thomas%0A%0AVi%20vil%20gerne%20h%C3%B8re%20mere%20om%20PrepNow%20som%20medlemsfordel.%0A%0AOrganisation%3A%20%0ACa.%20antal%20medlemmer%3A%20%0ADet%20passer%20os%20bedst%20at%20tale%3A%20%0A%0AVenlig%20hilsen%0A"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5.5" width="18" height="13" rx="3" fill="none" stroke="currentColor" stroke-width="2"/><path d="M4.5 7.5l7.5 6 7.5-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>Book 10 minutter</a></div>
+    </div>
+  </section>
+
+  <section class="pn-section" style="padding-top:0" aria-labelledby="gets-title">
+    <div class="pn-wrap">
+      <div class="pn-intro">
+        <span class="eyebrow">Det får medlemmet</span>
+        <h2 id="gets-title" class="display display--md">Hele PrepNow Pro i en måned</h2>
+        <p class="lead">Ugens madplan, hele indkøbslisten og Prep-aften: hele ugens mad på to aftener. Det er den samme app, som alle kan hente i App Store og Google Play.</p>
+      </div>
+      <div class="pn-gets">
+        <article class="card pn-g-chains">
+          <h3>Ugens tilbud fra 8 kæder</h3>
+          <p>Over 2.000 madtilbud hver uge. Medlemmet vælger selv sine butikker, og planen bruger kun dem.</p>
+          <ul class="pn-chains"><li style="--c:#f2c400"><i></i>Netto</li><li style="--c:#014693"><i></i>REMA 1000</li><li style="--c:#0050aa"><i></i>Lidl</li><li style="--c:#00aa46"><i></i>365discount</li><li style="--c:#1d2f54"><i></i>Føtex</li><li style="--c:#00aeef"><i></i>Bilka</li><li style="--c:#c31414"><i></i>SuperBrugsen</li><li style="--c:#d1202b"><i></i>Kvickly</li></ul>
+          <div class="pn-tags" aria-label="Eksempler på tilbud fra uge 45"><div class="tag" data-store="bilka"><span class="tag__store">Bilka</span><span class="tag__name">Danpo Hakket kylling 1 kg</span><span class="tag__price">39<small>kr</small></span></div><div class="tag" data-store="netto"><span class="tag__store">Netto</span><span class="tag__name">ØGO Sorte bønner 400 g</span><span class="tag__price">6<small>kr</small></span></div><div class="tag" data-store="rema"><span class="tag__store">REMA 1000</span><span class="tag__name">Hakket grisekød 500 g</span><span class="tag__price">20<small>kr</small></span></div><div class="tag" data-store="bilka"><span class="tag__store">Bilka</span><span class="tag__name">Laks i skiver 3 × 350 g</span><span class="tag__price">39<small>kr</small></span></div><span class="pn-tags__note">Fra ugens aviser, uge 45</span></div>
+        </article>
+        <article class="card pn-g-goals">
+          <h3>En plan til deres mål</h3>
+          <p>Morgenmad, frokost og aftensmad dag for dag, med pris og protein pr. portion.</p>
+          <ul class="pn-goals">
+            <li><span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7.5A2.5 2.5 0 0 1 6.5 5H18v3" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><rect x="4" y="8" width="16" height="11" rx="2.5" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="16" cy="13.5" r="1.4" fill="currentColor"/></svg></span>Spare penge<small>billigst først</small></li>
+            <li><span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5c0-4 2.9-6.5 7-6.5s7 2.5 7 6.5-3.1 6.5-7 6.5S5 16.5 5 12.5z" fill="none" stroke="currentColor" stroke-width="2"/><path d="M12 6c0-1.6 1-2.6 2.6-2.8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M14.6 3.2c.4 1.4-.2 2.4-1.4 2.8" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></span>Spise sundere<small>mere grønt</small></li>
+            <li><span><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2.5" y="9" width="3" height="6" rx="1" fill="none" stroke="currentColor" stroke-width="2"/><rect x="18.5" y="9" width="3" height="6" rx="1" fill="none" stroke="currentColor" stroke-width="2"/><path d="M5.5 12h13" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/><rect x="6" y="7" width="2.5" height="10" rx="1" fill="none" stroke="currentColor" stroke-width="2"/><rect x="15.5" y="7" width="2.5" height="10" rx="1" fill="none" stroke="currentColor" stroke-width="2"/></svg></span>Bygge muskler<small>højt protein</small></li>
+          </ul>
+          <div class="pn-day" aria-label="Eksempel på en aftensmad i planen"><div><img src="/img/dish/lib-d2c8f902cdb6.webp" alt="" width="54" height="54"><p><small>Eksempel<span class="pn-day__meal">: aftensmad</span></small><b>Ovnbagte frikadeller</b></p><span class="pn-day__nums"><span>8 kr</span><span>35 g protein</span></span></div></div>
+        </article>
+        <article class="card pn-g-list">
+          <div class="card__text">
+            <h3>Én indkøbsliste</h3>
+            <p>Sorteret efter butikkens gange, med prisen for hele pakker.</p>
+            <ul class="pn-list-pts"><li><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M5 10.5l3.2 3.2L15 6.8" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Hele ugens indkøb</li><li><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M5 10.5l3.2 3.2L15 6.8" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Delt med husstanden</li><li><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M5 10.5l3.2 3.2L15 6.8" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Kun de valgte butikker</li></ul>
+          </div>
+          <div class="phone " data-tone="dark"><div class="phone__screen"><img src="/img/partnere/shop.webp" alt="" width="390" height="844"></div><span class="phone__island"></span></div>
+        </article>
+        <article class="card pn-g-lib">
+          <div class="pn-big"><b>2.100+</b><span>aftensretter at vælge imellem</span></div>
+          <p>Hver ret er tjekket for mængder og næring og bedømt på, om den er lækker nok til at komme med. Der kommer nye til hver uge.</p>
+          <div class="pn-lib"><figure><img src="/img/dish/lib-db8e7c05f7db.webp" alt="Lasagne med squash og kylling" loading="lazy" width="900" height="672"><figcaption><span>Lasagne med squash</span></figcaption></figure><figure><img src="/img/dish/lib-031b2cd3e362.webp" alt="Kyllingekarry med røde linser og spinat" loading="lazy" width="900" height="672"><figcaption><span>Kyllingekarry</span></figcaption></figure><figure><img src="/img/dish/lib-d2c8f902cdb6.webp" alt="Ovnbagte frikadeller med kartofler og ærter" loading="lazy" width="900" height="672"><figcaption><span>Ovnbagte frikadeller</span></figcaption></figure><figure><img src="/img/dish/lib-a07ace95b4b6.webp" alt="Shakshuka med kartofler, spinat og rugbrød" loading="lazy" width="900" height="672"><figcaption><span>Shakshuka med spinat</span></figcaption></figure><figure><img src="/img/dish/lib-47511d8b4139.webp" alt="Kyllingetacos med bønner og revet gulerod" loading="lazy" width="900" height="672"><figcaption><span>Kyllingetacos</span></figcaption></figure><figure><img src="/img/dish/lib-885592a1050f.webp" alt="Mørbradkarry med kartofler, gulerødder og ærter" loading="lazy" width="900" height="672"><figcaption><span>Mørbradkarry</span></figcaption></figure></div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="pn-section" id="modeller" style="padding-top:0" aria-labelledby="models-title">
+    <div class="pn-wrap">
+      <div class="pn-intro pn-intro--center">
+        <span class="eyebrow">To modeller</span>
+        <h2 id="models-title" class="display display--md">Start gratis. Køb pladser, hvis det virker.</h2>
+      </div>
+      <div class="pn-models">
+        <article class="pn-model">
+          <span class="pn-model__flag">Hurtigst i gang</span>
+          <h3>Medlemsfordel</h3>
+          <p class="pn-model__lead">Jeres medlemmer, kunder eller medarbejdere får 1 måned gratis og fortsætter selv, hvis de vil.</p>
+          <p class="pn-price"><b>0 kr</b><span>for jer</span></p>
+          <ul class="pn-ticks">
+            <li><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M5 10.5l3.2 3.2L15 6.8" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Intet at integrere og ingen faktura</span></li>
+            <li><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M5 10.5l3.2 3.2L15 6.8" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Klar på en uge: vi sender koder og en tekst, I kan bruge</span></li>
+            <li><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M5 10.5l3.2 3.2L15 6.8" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Studerende fortsætter til studieprisen, 29 kr om måneden eller 249 kr om året</span></li>
+            <li><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M5 10.5l3.2 3.2L15 6.8" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span>I får tallene: indløste koder og aktive efter 4 uger</span></li>
+          </ul>
+          <a class="btn btn--violet" href="mailto:kontakt@prepnow.dk?subject=10%20minutter%20om%20PrepNow%20til%20vores%20medlemmer&body=Hej%20Thomas%0A%0AVi%20vil%20gerne%20h%C3%B8re%20mere%20om%20PrepNow%20som%20medlemsfordel.%0A%0AOrganisation%3A%20%0ACa.%20antal%20medlemmer%3A%20%0ADet%20passer%20os%20bedst%20at%20tale%3A%20%0A%0AVenlig%20hilsen%0A">Book 10 minutter</a>
+        </article>
+        <article class="pn-model pn-model--night">
+          <span class="pn-model__flag pn-model__flag--soft">Til arbejdsgivere og forbund</span>
+          <h3>Betalte pladser</h3>
+          <p class="pn-model__lead">I giver medlemmer eller medarbejdere 12 måneders adgang til PrepNow Pro.</p>
+          <p class="pn-price"><b>100–150 kr</b><span>pr. plads om året<br>ekskl. moms</span></p>
+          <ul class="pn-ticks">
+            <li><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M5 10.5l3.2 3.2L15 6.8" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Fra 100 pladser, pris efter aftale</span></li>
+            <li><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M5 10.5l3.2 3.2L15 6.8" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Faktura med CVR og moms</span></li>
+            <li><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M5 10.5l3.2 3.2L15 6.8" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Passer som personalegode via lønsystem eller fordelsplatform</span></li>
+            <li><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M5 10.5l3.2 3.2L15 6.8" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Samme tal som medlemsfordelen, aldrig data om den enkelte</span></li>
+          </ul>
+          <p class="pn-model__note">Til sammenligning: Pro koster normalt 399 kr om året inkl. moms.</p>
+          <a class="btn btn--lime" href="mailto:kontakt@prepnow.dk?subject=Tilbud%20p%C3%A5%20pladser%20i%20PrepNow&body=Hej%20Thomas%0A%0AVi%20vil%20gerne%20have%20et%20tilbud%20p%C3%A5%20PrepNow-pladser.%0A%0AOrganisation%3A%20%0ACa.%20antal%20pladser%3A%20%0ATil%20medlemmer%20eller%20medarbejdere%3A%20%0A%0AVenlig%20hilsen%0A">Få et tilbud på pladser</a>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="pn-privacy" id="data" aria-labelledby="data-title">
+    <div class="pn-privacy__aurora" aria-hidden="true"></div>
+    <div class="pn-wrap">
+      <div class="pn-intro">
+        <span class="eyebrow">Data og privatliv</span>
+        <h2 id="data-title" class="display display--md">I ser tal. Aldrig hvem.</h2>
+        <p class="lead">Hvad jeres medlemmer spiser, er deres egen sag. I får to samlede tal, aldrig noget om den enkelte.</p>
+      </div>
+      <div class="pn-see">
+        <div class="pn-see__yes">
+          <h3>Det ser I</h3>
+          <ul>
+            <li><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M5 10.5l3.2 3.2L15 6.8" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Antal indløste koder</span><em>antal</em></li>
+            <li><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M5 10.5l3.2 3.2L15 6.8" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Hvor mange der bruger appen efter 4 uger</span><em>antal</em></li>
+          </ul>
+          <p class="pn-see__foot">Altid samlet for alle, der har brugt jeres kode.</p>
+        </div>
+        <div class="pn-see__no">
+          <h3>Det ser I aldrig</h3>
+          <ul>
+            <li><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M6.5 6.5l7 7M13.5 6.5l-7 7" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg><span>Hvem der har brugt koden</span></li>
+            <li><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M6.5 6.5l7 7M13.5 6.5l-7 7" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg><span>Hvad de laver af mad, og hvad de køber</span></li>
+            <li><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M6.5 6.5l7 7M13.5 6.5l-7 7" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg><span>Mål, husstand og hvad de ikke spiser, fx allergier</span></li>
+          </ul>
+        </div>
+      </div>
+      <div class="pn-promises">
+        <div class="pn-promise"><span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s7-6.2 7-11.5a7 7 0 0 0-14 0C5 14.8 12 21 12 21z" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="9.5" r="2.5" fill="none" stroke="currentColor" stroke-width="2"/></svg></span><b>Data i EU</b><p>Medlemmernes indstillinger og planer ligger på servere i EU (Frankfurt).</p></div>
+        <div class="pn-promise"><span><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8.5" fill="none" stroke="currentColor" stroke-width="2"/><path d="M6 6l12 12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span><b>Ingen reklamer</b><p>Ingen reklamer i appen, intet reklame-id og ingen analysefirmaer.</p></div>
+        <div class="pn-promise"><span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.5l1.9 5.1 5.1 1.9-5.1 1.9L12 17.5l-1.9-5.1L5 10.5l5.1-1.9z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M18.5 16v4M16.5 18h4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span><b>AI-modellen kender ikke medlemmet</b><p>Ugens planer laves af en AI-model uden oplysninger om den enkelte.</p></div>
+      </div>
+      <p class="pn-privacy__note">Ingen sundhedsdata deles med jer eller andre. Det hele står i <a href="/privacy/">privatlivspolitikken</a>.</p>
+    </div>
+  </section>
+
+  <section class="faq pn-faq" aria-labelledby="faq-title">
+    <div class="faq__side"><span class="eyebrow">Spørgsmål</span><h2 id="faq-title" class="display display--md">Det, I plejer at spørge om</h2><p class="faq__ask">Andet, I vil vide?<br><a href="mailto:kontakt@prepnow.dk">kontakt@prepnow.dk</a></p></div>
+    <div class="faq__list"><details><summary>Hvad sker der efter den gratis måned?</summary><p>Medlemmet kan opsige i App Store eller Google Play, før måneden er gået, og betaler så ingenting. Vil de fortsætte, betaler de selv: 49 kr om måneden, eller 29 kr for studerende.</p></details><details><summary>Skal vi lave en databehandleraftale?</summary><p>Ikke for medlemsfordelen. I sender os ingen personoplysninger og får ingen tilbage, kun to samlede tal. Ved betalte pladser aftaler vi det sammen.</p></details><details><summary>Hvem hjælper medlemmerne, hvis de har spørgsmål?</summary><p>Det gør vi. Medlemmerne skriver til kontakt@prepnow.dk, så I ikke får ekstra arbejde.</p></details><details><summary>Virker det på iPhone og Android?</summary><p>Ja, på begge. Appen er på dansk og engelsk, og tilbuddene er fra danske butikker.</p></details></div>
+  </section>
+
+  <section class="pn-section pn-who-sec" aria-labelledby="who-title">
+    <div class="pn-who">
+      <div class="pn-avatar" aria-hidden="true">TR<img src="/img/brand/logo-mark.svg" alt=""></div>
+      <div class="pn-who__text">
+        <span class="eyebrow">Hvem står bag</span>
+        <h2 id="who-title">Thomas Rosenberg</h2>
+        <p class="pn-who__role">Stifter af PrepNow, studerende på Aarhus BSS</p>
+        <p>Jeg har bygget PrepNow ved siden af studiet, fordi en god madplan skal kunne betale sig hver uge. Skriver I, er det mig, der svarer, og mig, I taler med.</p>
+        <div class="pn-who__facts"><span><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M16.4 12.6c0-2.6 2.1-3.8 2.2-3.9-1.2-1.8-3.1-2-3.7-2-1.6-.2-3.1.9-3.9.9-.8 0-2-.9-3.4-.9-1.7 0-3.3 1-4.2 2.6-1.8 3.1-.5 7.7 1.3 10.2.9 1.2 1.9 2.6 3.2 2.6 1.3-.1 1.8-.8 3.3-.8s2 .8 3.4.8c1.4 0 2.3-1.3 3.1-2.5 1-1.4 1.4-2.8 1.4-2.9 0 0-2.7-1-2.7-4.1zM13.9 5c.7-.9 1.2-2 1-3.2-1 0-2.3.7-3 1.6-.7.8-1.2 2-1.1 3.1 1.2.1 2.3-.6 3.1-1.5z"/></svg><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M4.3 2.4c-.3.3-.4.7-.4 1.2v16.8c0 .5.1.9.4 1.2l9.4-9.6-9.4-9.6zm10.6 10.8l2.7 2.8-11.4 6.5c-.5.3-1 .3-1.4.1l10.1-9.4zm0-2.4L4.8 1.4c.4-.2.9-.2 1.4.1l11.4 6.5-2.7 2.8zm4.1-1.9l3 1.7c.9.5.9 1.4 0 1.9l-3 1.7-2.9-2.7 2.9-2.6z"/></svg>Live siden okt. 2026</span><span>CVR 46801822</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta pn-cta" id="kontakt" aria-labelledby="cta-title">
+    <div class="cta__sky" aria-hidden="true">
+      <img class="cloud cloud--1" src="/img/3d/cloud-puff.webp" alt="">
+      <img class="cloud cloud--3" src="/img/3d/cloud-puff.webp" alt="">
+      <img class="cloud-bank" src="/img/3d/cloud-bank.webp" alt="">
+    </div>
+    <img class="cta__boksie" src="/img/3d/boksie.webp" alt="" width="180" height="174" aria-hidden="true">
+    <h2 id="cta-title" class="display">Ti minutter, så ved I, om det passer.</h2>
+    <p class="lead">Skriv, hvem I er, og hvor mange medlemmer I har. Så viser jeg appen og hører, hvad jeres medlemmer har brug for.</p>
+    <a class="btn btn--violet" href="mailto:kontakt@prepnow.dk?subject=10%20minutter%20om%20PrepNow%20til%20vores%20medlemmer&body=Hej%20Thomas%0A%0AVi%20vil%20gerne%20h%C3%B8re%20mere%20om%20PrepNow%20som%20medlemsfordel.%0A%0AOrganisation%3A%20%0ACa.%20antal%20medlemmer%3A%20%0ADet%20passer%20os%20bedst%20at%20tale%3A%20%0A%0AVenlig%20hilsen%0A"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5.5" width="18" height="13" rx="3" fill="none" stroke="currentColor" stroke-width="2"/><path d="M4.5 7.5l7.5 6 7.5-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>Book 10 minutter</a>
+    <p class="pn-hint">Knappen åbner en mail, hvor det meste allerede står.</p>
+    <p class="pn-mail"><span>eller skriv direkte til</span><a href="mailto:kontakt@prepnow.dk">kontakt@prepnow.dk</a></p>
+  </section>
+</main>
+<footer class="footer">
+  <div class="footer__brand"><img src="/img/brand/logo-mark.svg" alt="" width="28" height="28"><span>PrepNow</span></div>
+  <nav aria-label="Juridisk">
+    <a href="/privacy/">Privatlivspolitik</a>
+    <a href="/terms/">Vilkår</a>
+    <a href="/partnere/" aria-current="page">For organisationer</a>
+  </nav>
+  <p>PrepNow · CVR 46801822 · <a href="mailto:kontakt@prepnow.dk">kontakt@prepnow.dk</a></p>
+  <p>Tal pr. 1. november 2026: tilbud og priser fra ugens tilbudsaviser (uge 40 til 45), retter fra PrepNows egen opskriftsbase. PrepNow er ikke tilknyttet butikkerne, og deres navne tilhører dem. PrepNow er ikke sundhedsfaglig rådgivning.</p>
+</footer>
+</body>
+</html>
